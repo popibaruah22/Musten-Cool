@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Musten</title>
+  <link rel="stylesheet" href="style.css"/>
+   
+</head>
+<body>
+  <!--Load-->
+  <div id="loader">
+    <div class="spinner"></div>
+    <h3>No Internet Connection... </h3>
+  </div>
+
+<!-- MAIN PAGE -->
+<div id="main">
+  <nav>
+   
+      <img class="logo" src="Logo.png" alt="Logo"><b class="name"> Musten</b>
+      <button class="about-button" onclick="next()">—<br>—<br>—</button>
+      <button class="post-button" onclick="openPostsPage()">Post</button>
+    
+  </nav><p><br><br>
+
+  <center>
+    <input class="search" id="search" placeholder="Search For Audio...">
+    <button class="clear" onclick="search.value='';filterSongs()">×</button>
+  </center><p><br>
+    <center><h2><i class="worn">Available Songs :—</i></h2></center><p><br><br>
+  <div id="songs"></div>
+</div>
+
+<!-- PLAYER PAGE -->
+<div id="playerPage">
+  <div class="player-nav">
+    <button class="ex" onclick="closePlayer()"><u>Back</u></button>
+  </div>
+
+  <img id="playerImg" class="player-img">
+
+  <center>
+    <h2 id="playerTitle"></h2>
+
+    <audio id="playerAudio"></audio>
+
+    <p><br><br><div class="controls">
+      <button onclick="playerAudio.play()">Play</button>
+      <button onclick="playerAudio.pause()">Pause</button>
+      <button onclick="stopPlayer()">End</button>
+    </div><p><br><br>
+
+    <input type="range" id="seek" min="0" value="0" oninput="playerAudio.currentTime=this.value">
+      <p><br><br>
+    <div class="time">
+      <span id="cur">0:00</span> / <span id="dur">0:00</span>
+    </div>
+  </center>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about">
+  <button class="bck" onclick="pre()">Back</button>
+  <u class="heading"><center>About Page</center></u><p><br><br>
+    <center class="notice">
+       Notice: All songs available here are generated using 
+      Artificial Intelligence (AI). Although AI is used, the 
+      songs are created by the developer using carefully crafted 
+      prompts, commands, and creative input. These tracks are provided 
+      for listening purposes only. You are not allowed to download, reuse, 
+      modify, redistribute, or use them for any personal, commercial, or other
+      purposes. Copying, reproducing, or using the lyrics in any form is strictly
+      prohibited. But here some songs are composed by people by their own.<p>
+
+       If you wish to use any of these songs for your own purposes, you must contact the
+        developer for permission. Only if the developer explicitly permits you may you use
+        the content; otherwise, any use is strictly forbidden. Unauthorized use may 
+        result in copyright infringement issues.<p>
+          
+          This App has many features in it, on this about page you can see Become Artist Songs
+    option there you can upload your own song like other people and become a artist also
+    doesn't matter the song you have uploaded is of AI or your's but it should not be copyrighted.
+    But you cannot upload bollywood or other industries songs or else you will be in danger
+    so upload the song which you have created by AI or you have composed also
+    don't use copyrighted lyrics and music use your own. Once you upload a song our developers
+    will check it crealy to avoid issues.
+    You can also buy a Premium plan where you can sell your own song to others.<br><br>
+    You can also sell your songs, but you cannot sell copyright songs.<p>
+      
+      This app also has a post button on clicking it you will go to the post page
+      where you can upload post and discover posts of people.<p><br><br>
+   </center>
+          <center><div class="seperator"></div>
+    <div class="hj">
+      <br><br>
+      <button class="artist" onclick="openArtistPage()">Upload Your Own Songs</button>
+      <br><br>
+    </div>
+
+    <div class="seperator"></div>
+    <div class="hj">
+      <br><br>
+      <button class="pro" onclick="goPremium()">Go Premium</button>
+      <br><br>
+    </div>
+    <br><br></center>
+</div>
+        
+<!-- ARTIST FORM PAGE -->
+<div id="artistPage">
+  <button class="backBtn" onclick="backToAbout()">← Back</button>
+
+  <div class="artistForm">
+    <h2>Upload Your Song</h2>
+
+    <input type="text" id="songTitle" placeholder="Song Title">
+
+    <label class="customFileBtn" for="songImage">Upload Song Image</label>
+    <input type="file" id="songImage" accept="image/*" class="fileInput">
+    <div class="preview" id="imagePreview"></div>
+
+    <label class="customFileBtn" for="songAudio">Upload Song Audio</label>
+    <input type="file" id="songAudio" accept="audio/*" class="fileInput">
+    <div class="preview" id="audioPreview"></div>
+
+    <button class="submitBtn" onclick="submitSong()">Upload Song</button>
+  </div><p><br><br>
+    
+    <center>
+      The songs you will upload will display along with the AI songs section in the main page but you cannot upload 
+      copyright songs otherwise, our team will reject that song.<p>After Upload the songs will display in the app within 1 week. It
+      may be a bit time consuming but our team will check it crealy to avoid issues. The photo or audio file should not be more than 100MB.
+    </center>
+</div>
+
+<!-- POSTS PAGE (MiniGram) -->
+<div id="postsPage">
+  <div class="posts-header">
+    <button class="posts-back-btn" onclick="closePostsPage()">← Back</button>
+    <h1>Discover People Posts</h1>
+    <button class="posts-add-btn" onclick="openPostsModal()">+</button>
+  </div>
+
+  <center><div class="posts-container">
+    <div id="postsGallery"></div>
+  </div>
+</div></center>
+
+<!-- POSTS UPLOAD MODAL -->
+<div class="posts-modal" id="postsModal">
+  <div class="posts-modal-content">
+    <button class="posts-close-btn" onclick="closePostsModal()">Close</button>
+    <h2 style="color: black;">Upload Post</h2>
+    
+    <label class="posts-custom-file-btn" for="postsImageInput">Choose Image</label>
+    <input type="file" id="postsImageInput" accept="image/*" style="display:none;">
+    <div class="posts-image-preview" id="postsImagePreview"></div>
+
+    <textarea id="postsPrompt" placeholder="Enter your Title"></textarea>
+    <button class="posts-upload-btn" onclick="uploadPostTelegram()">Upload</button>
+    <h5 style="color: blue">Your Post will upload to the app within 1 week.  The photo should not be more than 100MB.</h5>
+  </div>
+</div>
+<div id="badge-page">
+  <center><div id="form-buy">
+  <button class="btxn" id="purchase-close">Close</button><br><br>
+    <form>
+  <input class="long" placeholder="First Name" required><br><br>
+  <input class="long" placeholder="Last Name" required><br><br>
+  <div style="color: red; font-size: 30px; font-weight: 900;">
+    You must agree that the details that are submitted are of yours not others.<p>
+      The badge will disappear as you cross the given limit by developer. Then you will have to buy the badge again.<p>
+        Details cannot submitted if you don't have proper internet connection.
+        The badge will display in the member list once you pay on school to the developer the money it will display within 1 week.
+  </div>
+  <button class="btxn" id="get">₹50/month Book</button>
+    </form>
+  </div></center>
+    <center>
+  <button class="btxn" onclick="previous()">Back</button>
+<button class="btxn" id="member">Members</button>
+<button class="btxn" id="men-close">Close</button>
+</center>
+
+<div id="wide">
+  <div class="align">Verified Artists</div>
+  <div id="people">Loading...</div>
+</div>
+
+<center>
+<div class="badge-container">
+
+
+
+<div class="badge">
+  <img src="Artist-Badge.png">
+</div><p><br><br>
+  <div class="gap">
+<h2 style="font-size: 60px;">Premium Artist Badge</h2>
+    <div style="color: white; font-size: 35px;">
+      ✓ Free unlimited posts uploads.<br><br>
+      ✓ Free unlimited Artist Song uploads.<br><br>
+      ✓ More fast uploads and no disturbance.<br><br>
+    </div>
+<button class="btxn" id="purchase">Buy Badge</button>
+  </div>
+</div>
+</center><p><br><br>
+  
+  <center><div class="badge-container" id="heavy">
+
+
+
+<div class="badge">
+  <img src="Master.png" id="master">
+</div><p><br><br>
+  <div class="gap">
+<h2 style="font-size: 60px;">Pheonix Master Badge</h2>
+    <div style="color: white; font-size: 35px;">
+      ✓ More Advanced fearures than Premium Artist Badge.<br><br>
+      ✓ 10rs cashback.<br><br>
+      ✓ Develop Apps and Webs and learn coding with Developer.<br><br>
+    </div>
+    <h3 style="font-size: 40px;">Follow the rule of addEventListener to buy the badge in ₹50,000/month.</h3>
+  </div>
+</div></center><p><br><br>
+    </div>
+    <div id="P-Master-page">
+  <center>
+    <button class="btxn" onclick="preback()">Back</button>
+  </center>
+
+  <p><br><br></p>
+
+  <form id="bookingForm">
+    <center>
+      <input class="long" id="firstName" type="text" placeholder="Enter Your First Name..." required>
+      <p><br><br></p>
+
+      <input class="long"id="lastName" type="text" placeholder="Enter Your Last Name..." required>
+      <p><br><br></p>
+
+      <div style="color:red;font-size:30px;font-weight:900;">
+        You must agree that the details that are submitted are of yours not others.
+        <p>The badge will disappear as you cross the given limit by developer.</p>
+        <p>Details cannot be submitted without proper internet connection.</p>
+        <p>The badge will display in the member list within 1 week after payment.</p>
+      </div>
+
+      <p><br></p>
+      <button id="bookBtn" class="btxn" onclick="poste(event)">Book to Buy</button>
+    </center>
+  </form>
+
+  <p></p>
+      <center><button class="btx" id="mccall">Contact Developer</button></center>
+</div>
+<script src="script.js">
+    
+
+    </script>
+    </body>
+          </html>
