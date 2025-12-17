@@ -339,7 +339,7 @@ input[type=range] {
   position: fixed;
   inset: 0;
   background: linear-gradient(135deg, #00c6ff, #0072ff, #00ff94);
-  min-height: 100vh;
+  height: auto;
   color: #333;
   overflow-y: auto;
   z-index: 1000;
