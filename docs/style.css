@@ -34,6 +34,7 @@ nav {
   border-radius: 50%;
   color: white;
   background: blue;
+  margin-top: 50px;
   margin-bottom: 50px;
   border: 3px solid white;
   -webkit-text-stroke: 5px white;
@@ -349,6 +350,7 @@ input[type=range] {
   position: fixed;
   top: 0;
   width: 100%;
+  height: auto;
   background: rgba(255,255,255,0.95);
   padding: 16px 20px;
   display: flex;
@@ -359,10 +361,11 @@ input[type=range] {
   z-index: 1001;
 }
 .posts-header h1 {
-  margin: 0;
+  margin-top: 20px;
   font-size: 32px;
   font-weight: 900;
   color: #0072ff;
+  margin-bottom: 20px;
 }
 .posts-back-btn {
   position: absolute;
