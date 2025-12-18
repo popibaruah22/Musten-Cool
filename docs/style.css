@@ -361,11 +361,11 @@ input[type=range] {
   z-index: 1001;
 }
 .posts-header h1 {
-  margin-top: 7vh;
+  margin-top: 3vh;
   font-size: 32px;
   font-weight: 900;
   color: #0072ff;
-  margin-bottom: 7vh;
+  margin-bottom: 3vh;
 }
 .posts-back-btn {
   position: absolute;
@@ -394,7 +394,7 @@ input[type=range] {
   padding: 0;
 }
 .posts-container {
-  margin-top: 18vh;
+  margin-top: 30%;
   max-width: 70%;
   margin: 100px auto 20px auto;
   padding: 0 10px;
