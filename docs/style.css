@@ -394,6 +394,7 @@ input[type=range] {
   padding: 0;
 }
 .posts-container {
+  margin-top: 18vh;
   max-width: 70%;
   margin: 100px auto 20px auto;
   padding: 0 10px;
