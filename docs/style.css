@@ -34,6 +34,7 @@ nav {
   border-radius: 50%;
   color: white;
   background: blue;
+  margin-bottom: 50px;
   border: 3px solid white;
   -webkit-text-stroke: 5px white;
   outline: 2px solid red;
