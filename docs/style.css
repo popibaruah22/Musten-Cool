@@ -6,20 +6,22 @@ body {
 }
 
 .link-btn { 
-    height: 15vh;
-    width: 70%;
     display:inline-block; 
-    margin: 15px; 
-    padding: 15px 30px; 
     background-color:#e1306c; 
-    color:white; 
-    font-weight:700; 
-    font-size:1.1rem; 
     text-decoration:none; 
-    border-radius:12px; 
     transition:0.2s; 
-    cursor:pointer;
-  }
+    color: white;
+  background: linear-gradient(red, blue);
+  font-size: 60px;
+  height: 15vh;
+  font-weight: 900;
+  border-radius: 150px;
+  border: 5px solid black;
+  box-shadow: 10px 10px 50px orange;
+  width: 70%;
+  cursor: pointer;
+
+}
 
 .worn {
   font-weight: 900;
