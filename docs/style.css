@@ -11,7 +11,6 @@ body {
     text-decoration:none; 
     transition:0.2s; 
     color: white;
-  background: linear-gradient(red, blue);
   font-size: 60px;
   height: 15vh;
   font-weight: 900;
