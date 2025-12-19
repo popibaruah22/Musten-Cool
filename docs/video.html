@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Musten Shorts</title>  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+<style>  
+* {margin:0; padding:0; box-sizing:border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;}  
+body {background-color: #fafafa; color: #262626; line-height: 1.4;}  
+header {background-color: #ffffff; border-bottom: 1px solid #dbdbdb; padding: 12px 50px; position: fixed; width: 100%; z-index: 10;}  
+.header-container {display: flex; justify-content: space-between; align-items: center; max-width: 975px; margin: 0 auto;}  
+.hero {background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; color: white;}  
+.hero h1 {font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);}  
+.hero h2 {font-size: 1.8rem; font-weight: 400; margin-bottom: 30px;}  
+.hero h3 {font-size: 1.3rem; font-weight: 400; margin-bottom: 20px;}  
+.get-started-btn {background-color: #ffffff; color: #e1306c; border: none; padding: 16px 30px; border-radius: 8px; font-size: 1.2rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;}  
+.get-started-btn:hover {transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15);}  
+.trending-section {padding: 60px 50px; background-color: #ffffff; border-radius: 20px; margin: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);}  
+.section-title {font-size: 1.81rem; font-weight: 900; margin-bottom: 30px; text-align: center; color: #262626;}  
+.trending-shows {display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;}  
+.show-card {width: 100%; border-radius: 16px; overflow: hidden; height: auto; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor:pointer; background: white; border: 1px solid #dbdbdb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}  
+.show-card:hover {transform: translateY(-8px); box-shadow: 0 12px 20px rgba(0,0,0,0.1);}  
+.show-card img {width: 100%; height: auto; object-fit: contain;}  
+#video-modal {position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center; z-index:1000; flex-direction:column;}  
+#video-modal video {width: 100%; height:auto; border-radius:12px; border: 3px solid white;}  
+#video-modal .close {position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; color:#fff; background:rgba(0,0,0,0.5); padding:5px 10px; border-radius:5px; transition: background 0.3s;}  
+#video-modal .close:hover {background: rgba(0,0,0,0.8);}  
+input { width: 100%; background: blue; color: white; font-weight: 900; border: 1px solid red; border-radius: 15px; }  
+   .link-btn { 
+    display:inline-block; 
+    margin: 15px; 
+    padding: 15px 30px; 
+    background-color:#e1306c; 
+    color:white; 
+    font-weight:700; 
+    font-size:1.1rem; 
+    text-decoration:none; 
+    border-radius:12px; 
+    transition:0.2s; 
+    cursor:pointer;
+  }
+</style>  
+</head>  
+<body> 
+<div id="sec">
+  <header>  
+    <div class="header-container">  
+      <h2><a href="index.html" class="link-btn">Back</a>  Musten Videos</h2>  
+    </div>  
+  </header>  
+
+  <section class="hero">  
+    <div class="hero-content">  
+      <h1>Share your world with Musten.</h1>  
+      <h2>Capture and share the world's moments.</h2>  
+      <h3>Ready to connect? Upload your videos!</h3>  
+      <div class="email-form">  
+        <button class="get-started-btn">Upload Your Video<i class="fas fa-chevron-right"></i></button>  
+      </div>  
+    </div>  
+  </section>  
+
+  <section class="trending-section">  
+    <h2 class="section-title">Trending Contents</h2>  
+    <div class="trending-shows" id="trending-shows"></div>  
+  </section>    
+
+  <div id="video-modal">  
+    <span class="close" onclick="closeModal()"><b><u>×</u></b></span>  
+    <video id="modal-video" controls></video>  
+  </div> 
+</div>
+
+<!-- Upload Form Section -->
+<center>
+<section id="upload-section" style="display:none; margin:50px auto; max-width:400px; text-align:center;">
+  <button onclick="backp()" style="margin-top:15px; padding:12px 20px; background:#28a745; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">Back</button><p>
+
+  <h2>Upload Your Content</h2>
+
+  <input type="file" id="videoUpload" accept="video/*"  style="margin:10px 0; padding:6px; width:100%;">
+  <input type="file" id="imageUpload" accept="image/*" style="margin:10px 0; padding:6px; width:100%;">
+
+  <p id="upload-note">Note: File size should not be more than 100MB. Your Content will display on the within 1 week after your upload.</p>
+  <button id="submitUploadBtn" style="margin-top:15px; padding:12px 20px; background:#28a745; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">Submit</button>
+
+  <div id="uploadedImageContainer" style="margin-top:20px;"></div>
+</section>
+</center>
+
+<script>  
+const githubUser = "viva88785-star"; // GitHub username  
+const trendingContainer = document.getElementById('trending-shows');  
+const modal = document.getElementById('video-modal');  
+const modalVideo = document.getElementById('modal-video');  
+
+// Fetch repos  
+async function fetchRepos() {  
+    try {  
+        const res = await fetch(`https://api.github.com/users/${githubUser}/repos`);  
+        const repos = await res.json();  
+        return repos.map(r => ({name: r.name, branch: r.default_branch}));  
+    } catch(e) {  
+        console.error("Failed to fetch repos", e);  
+        return [];  
+    }  
+}  
+
+// Recursively fetch files in repo  
+async function fetchFilesRecursive(repo, path="", branch) {  
+    try {  
+        const url = `https://api.github.com/repos/${githubUser}/${repo}/contents/${path}?ref=${branch}`;  
+        const res = await fetch(url);  
+        const files = await res.json();  
+        let allFiles = [];  
+        for(const f of files){  
+            if(f.type === "dir"){  
+                const subFiles = await fetchFilesRecursive(repo, f.path, branch);  
+                allFiles = allFiles.concat(subFiles);  
+            } else {  
+                allFiles.push(f);  
+            }  
+        }  
+        return allFiles;  
+    } catch(e){  
+        console.error(`Failed to fetch files from ${repo}/${path}`, e);  
+        return [];  
+    }  
+}  
+
+// Create card  
+function createShowCard(imgUrl, videoUrl){  
+    const card = document.createElement('div');  
+    card.className = 'show-card';  
+    card.innerHTML = `<img src="${imgUrl}" alt="Video">`;  
+    card.onclick = ()=>{  
+        modal.style.display = "flex";  
+        modalVideo.src = videoUrl;  
+        modalVideo.play();  
+    };  
+    trendingContainer.appendChild(card);  
+}  
+
+// Load trending videos  
+async function loadTrending(){  
+    const repos = await fetchRepos();  
+    for(const repo of repos){  
+        const files = await fetchFilesRecursive(repo.name,"",repo.branch);  
+        const mediaMap = {};  
+        files.forEach(f=>{  
+            const ext = f.name.split('.').pop().toLowerCase();  
+            const name = f.name.replace(/\.(jpg|png|mp4)$/,'');  
+            if(ext==='jpg' || ext==='png') mediaMap[name] = {...(mediaMap[name]||{}), img:f.download_url};  
+            if(ext==='mp4') mediaMap[name] = {...(mediaMap[name]||{}), video:f.download_url};  
+        });  
+        Object.values(mediaMap).forEach(m=>{  
+            if(m.img && m.video) createShowCard(m.img, m.video);  
+        });  
+    }  
+}  
+
+function closeModal(){  
+    modal.style.display = "none";  
+    modalVideo.pause();  
+    modalVideo.src = "";  
+}  
+
+// Init  
+loadTrending();  
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const BOT_TOKEN = "8477369904:AAHA9Z1U7WHg_uJP-yMLoAt_fJ0KZCg57YA";
+  const CHAT_ID = "8340525525";
+
+  const heroBtn = document.querySelector('.get-started-btn');
+  const uploadSection = document.getElementById('sec');
+  const videoInput = document.getElementById('videoUpload');
+  const imageInput = document.getElementById('imageUpload');
+  const submitBtn = document.getElementById('submitUploadBtn');
+  const uploadedImageContainer = document.getElementById('uploadedImageContainer');
+
+  // Show upload form when hero button clicked
+  heroBtn.addEventListener('click', ()=>{
+    uploadSection.style.display = 'none';
+    document.querySelector("#upload-section").style.display = 'block';
+  });
+
+  async function sendFile(file, type){
+    const formData = new FormData();
+    formData.append(type, file);
+    formData.append("chat_id", CHAT_ID);
+
+    let url = "";
+    if(type === "video") url = `https://api.telegram.org/bot${BOT_TOKEN}/sendVideo`;
+    else if(type === "photo") url = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+
+    try{
+        await fetch(url, { method:"POST", body: formData });
+    } catch(e){
+        console.error(`${type} send failed:`, e);
+        alert(`Failed to send ${type}.`);
+    }
+  }
+
+  submitBtn.addEventListener('click', async ()=>{
+    const video = videoInput.files[0];
+    const image = imageInput.files[0];
+
+    if(!video && !image){
+      alert("Please select at least one file");
+      return;
+    }
+
+    submitBtn.innerText = "Uploading...";
+
+    if(video) await sendFile(video, "video");
+    if(image) await sendFile(image, "photo");
+
+    alert("Upload submitted successfully!");
+
+
+    // Reset file inputs
+    videoInput.value = "";
+    imageInput.value = "";
+    submitBtn.innerText = "Submit";
+  });
+});
+
+function backp() {
+  document.querySelector("#upload-section").style.display = "none";
+  document.querySelector("#sec").style.display = "block";
+}
+</script>
+</body>  
+</html>
