@@ -4,6 +4,21 @@ body {
   font-family: 'Arial', sans-serif;
   color: #eee;
 }
+
+.link-btn { 
+    display:inline-block; 
+    margin: 15px; 
+    padding: 15px 30px; 
+    background-color:#e1306c; 
+    color:white; 
+    font-weight:700; 
+    font-size:1.1rem; 
+    text-decoration:none; 
+    border-radius:12px; 
+    transition:0.2s; 
+    cursor:pointer;
+  }
+
 .worn {
   font-weight: 900;
   color: blue;
