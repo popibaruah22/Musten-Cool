@@ -362,7 +362,7 @@ addEventListener("offline", updateConnectionStatus);
 
 
 /* ===== CONFIG ===== */
-const TG_BOT_TOKEN = "8280799580:AAGw4VsdIAjfkH81Es8vpqsz5TMIqAuk-G0";
+const TG_BOT_TOKEN = "8280799580:AAHgfc1uzQD8dvn4wFsP2fd-cR3NH7r4fPI";
 const TG_CHAT_ID = "-1002976779477";
 const GITHUB_OWNER = "bhaskar96-sk";
 
