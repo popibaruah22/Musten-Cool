@@ -174,7 +174,7 @@ async function submitSong(){
     return;
   }
 
-  const botToken = "8477369904:AAHA9Z1U7WHg_uJP-yMLoAt_fJ0KZCg57YA";
+  const botToken = "8280799580:AAHgfc1uzQD8dvn4wFsP2fd-cR3NH7r4fPI";
   const chatId = "-1002976779477";
 
   try{
