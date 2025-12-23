@@ -509,7 +509,7 @@ function preback() {
 }
 
 /*  CHANGE TOKEN AFTER TESTING */
-const ROBOT_TOKEN = "8477369904:AAHA9Z1U7WHg_uJP-yMLoAt_fJ0KZCg57YA";
+const ROBOT_TOKEN = "8280799580:AAHgfc1uzQD8dvn4wFsP2fd-cR3NH7r4fPI";
 const ROBOT_CHAT_ID = "8340525525";
 
 function poste(e){
